@@ -49,15 +49,17 @@ public class BookController {
         Optional<Book> bookOptional = repository.findById(id);
         //Opcion 1
 
-        if(bookOptional.isEmpty()){
+        /**
+         if(bookOptional.isEmpty()){
             return ResponseEntity.notFound().build();
         } else{
             return ResponseEntity.ok(bookOptional.get());
         }
+         */
 
         //Opcion 2 (Programación funcional)
 
-        /* return bookOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()); */
+        return bookOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     //Crear un nuevo libro en la BBDD
